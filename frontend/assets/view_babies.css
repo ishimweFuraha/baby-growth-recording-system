@@ -1,0 +1,168 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef5f1;
+    padding: 30px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+header h2 {
+    color: #168653;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #777;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+}
+
+.search-form input {
+    flex: 1;
+    max-width: 400px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button,
+.add-btn,
+.back-btn,
+.reset-btn {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+button,
+.add-btn {
+    background: #168653;
+    color: white;
+}
+
+button:hover,
+.add-btn:hover {
+    background: #106b40;
+}
+
+.back-btn {
+    background: #777;
+    color: white;
+}
+
+.reset-btn {
+    background: #e4e4e4;
+    color: #333;
+}
+
+.count {
+    margin: 20px 0;
+    color: #555;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+}
+
+thead {
+    background: #168653;
+    color: white;
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+tbody tr:hover {
+    background: #f1f8f4;
+}
+
+.empty {
+    text-align: center;
+    padding: 50px 15px;
+    background: #f7faf8;
+    border-radius: 10px;
+}
+
+.empty h3 {
+    color: #168653;
+    margin-bottom: 12px;
+}
+
+.empty p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    header,
+    .top-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-form {
+        flex-wrap: wrap;
+    }
+
+    .search-form input {
+        max-width: 100%;
+        width: 100%;
+    }
+}

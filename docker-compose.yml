@@ -1,0 +1,43 @@
+﻿services:
+  backend:
+    build: ./backend
+    container_name: bgrs-backend
+    environment:
+      DB_HOST: db
+      DB_NAME: baby_growth
+      DB_USER: bgrs_user
+      DB_PASSWORD: bgrs_password
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: bgrs-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: bgrs-database
+    environment:
+      MYSQL_DATABASE: baby_growth
+      MYSQL_USER: bgrs_user
+      MYSQL_PASSWORD: bgrs_password
+      MYSQL_ROOT_PASSWORD: bgrs_root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/baby_growth.sql:/docker-entrypoint-initdb.d/baby_growth.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pbgrs_root_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
